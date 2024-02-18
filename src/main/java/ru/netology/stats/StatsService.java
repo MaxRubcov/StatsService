@@ -2,21 +2,21 @@ package ru.netology.stats;
 
 public class StatsService {
 
-    public int getSumSales(long[] sales) {
-        int sumSales = 0;
+    public long SumSales(long[] sales) {
+        long sumSales = 0;
         for (long i : sales) {
             sumSales += i;
         }
         return sumSales;
     }
 
-    public int getAverageSumSales(long[] sales) {
-        int sumSales = getSumSales(sales);
-        int averageSumSales = sumSales / 12;
-        return averageSumSales;
+    public long averageSales(long[] sales) {
+        long sumSales = SumSales(sales);
+        long averageAmount = sumSales / 12;
+        return averageAmount;
     }
 
-    public int getMaxMonthSales(long[] sales) {
+    public int maxSales(long[] sales) {
         int maxMonth = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] >= sales[maxMonth]) {
@@ -26,7 +26,7 @@ public class StatsService {
         return maxMonth + 1;
     }
 
-    public int getMinMonthSales(long[] sales) {
+    public int minSales(long[] sales) {
         int minMonth = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] <= sales[minMonth]) {
@@ -36,28 +36,26 @@ public class StatsService {
         return minMonth + 1;
     }
 
-    public int getSumMonthBelowAverage(long[] sales) {
-        int averageSumSales = getAverageSumSales(sales);
-        int sumMonthBelAv = 0;
-        //int sumMonthAboveAverage = 0;
+    public int belowAverageSales(long[] sales) {
+        long averageSumSales = averageSales(sales);
+        int sumMonth = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] < averageSumSales) {
-                sumMonthBelAv++;
+                sumMonth++;
             }
         }
-        return sumMonthBelAv;
+        return sumMonth;
     }
 
 
-    public int getSumMonthAboveAverage(long[] sales) {
-        int averageSumSales = getAverageSumSales(sales);
-        int sumMonthAbAv = 0;
-        //int sumMonthAboveAverage = 0;
+    public int aboveAverageSales(long[] sales) {
+        long averageSumSales = averageSales(sales);
+        int sumMonth = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] > averageSumSales) {
-                sumMonthAbAv++;
+                sumMonth++;
             }
         }
-        return sumMonthAbAv;
+        return sumMonth;
     }
 }
